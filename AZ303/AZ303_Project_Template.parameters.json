@@ -1,0 +1,30 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "networkName": {
+            "value": "randent-vnet"
+        },
+        "storageAcctName": {
+            "value": "randentstorage2021"
+        },
+        "vNet": {
+            "value": "/subscriptions/a72023c1-98e7-4e12-adc9-278eb0a818c0/resourceGroups/randent/providers/Microsoft.Network/virtualNetworks/randentvnet/subnets/Subnet-1"
+        },
+        "blobContainerName": {
+            "value": "randent-blobcontainer" 
+        },
+        "vmName": {
+            "value": "randent-vm" 
+        },
+        "networkInterfaceName": {
+            "value": "randent-networkinterface"
+        },
+        "nsgName": {
+            "value": "randent-nsg"
+        },
+        "publicIPName": {
+            "value": "randent-publicip"
+        }
+    }
+}
