@@ -1,9 +1,196 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {},
+    "parameters": {
+            "site1name1": {
+                "type": "string"
+            },
+            "site1name2": {
+                "type": "string"
+            },
+            "site2name1": {
+                "type": "string"
+            },
+            "site2name2": {
+                "type": "string"
+            },
+            "location1": {
+                "type": "string"
+            },
+            "location2": {
+                "type": "string"
+            },
+            "sku": {
+                "type": "string"
+            },
+            "skucode": {
+                "type": "string"
+            },
+            "repositoryUrl": {
+                "type": "string"
+            },
+            "branch": {
+                "type": "string"
+            },
+            "repositoryToken": {
+                "type": "securestring"
+            },
+            "apiLocation": {
+                "type": "string"
+            },
+            "webappLocation1":{
+                "type": "string"
+            },
+            "webappLocation2":{
+                "type": "string"
+            },
+            "webappArtifactLocation1": {
+                "type": "string"
+            },
+            "webappArtifactLocation2": {
+                "type": "string"
+            },
+            "webappResourceTags": {
+                "type": "object"
+            },
+            "appSettings": {
+                "type": "object"
+            }
+    },
     "functions": [],
     "variables": {},
-    "resources": [],
+    "resources": [ {
+                "apiVersion": "2021-01-15",
+                "name": "[parameters('site1name1')]",
+                "type": "Microsoft.Web/staticSites",
+                "location": "[parameters('location1')]",
+                "tags": "[parameters('webappresourceTags')]",
+                "properties": {
+                    "repositoryUrl": "[parameters('repositoryUrl')]",
+                    "branch": "[parameters('branch')]",
+                    "repositoryToken": "[parameters('repositoryToken')]",
+                    "buildProperties": {
+                        "appLocation": "[parameters('webappLocation1')]",
+                        "apiLocation": "[parameters('apiLocation')]",
+                        "appArtifactLocation": "[parameters('webappArtifactLocation1')]"
+                    }
+                },
+                "sku": {
+                    "Tier": "[parameters('sku')]",
+                    "Name": "[parameters('skuCode')]"
+                },
+                "resources":[
+                    {
+                        "apiVersion": "2021-01-15",
+                        "name": "appsettings",
+                        "type": "config",
+                        "location": "[parameters('location1')]",
+                        "properties": "[parameters('appSettings')]",
+                        "dependsOn": [
+                            "[resourceId('Microsoft.Web/staticSites', parameters('site1name1'))]"
+                        ]
+                    }
+                ]
+            },
+            {
+                "apiVersion": "2021-01-15",
+                "name": "[parameters('site1name2')]",
+                "type": "Microsoft.Web/staticSites",
+                "location": "[parameters('location1')]",
+                "tags": "[parameters('webappresourceTags')]",
+                "properties": {
+                    "repositoryUrl": "[parameters('repositoryUrl')]",
+                    "branch": "[parameters('branch')]",
+                    "repositoryToken": "[parameters('repositoryToken')]",
+                    "buildProperties": {
+                        "appLocation": "[parameters('webappLocation1')]",
+                        "apiLocation": "[parameters('apiLocation')]",
+                        "appArtifactLocation": "[parameters('webappArtifactLocation1')]"
+                    }
+                },
+                "sku": {
+                    "Tier": "[parameters('sku')]",
+                    "Name": "[parameters('skuCode')]"
+                },
+                "resources":[
+                    {
+                        "apiVersion": "2021-01-15",
+                        "name": "appsettings",
+                        "type": "config",
+                        "location": "[parameters('location1')]",
+                        "properties": "[parameters('appSettings')]",
+                        "dependsOn": [
+                            "[resourceId('Microsoft.Web/staticSites', parameters('site1name2'))]"
+                        ]
+                    }
+                ]
+            },
+            {
+                "apiVersion": "2021-01-15",
+                "name": "[parameters('site2name1')]",
+                "type": "Microsoft.Web/staticSites",
+                "location": "[parameters('location2')]",
+                "tags": "[parameters('webappresourceTags')]",
+                "properties": {
+                    "repositoryUrl": "[parameters('repositoryUrl')]",
+                    "branch": "[parameters('branch')]",
+                    "repositoryToken": "[parameters('repositoryToken')]",
+                    "buildProperties": {
+                        "appLocation": "[parameters('webappLocation2')]",
+                        "apiLocation": "[parameters('apiLocation')]",
+                        "appArtifactLocation": "[parameters('webappArtifactLocation2')]"
+                    }
+                },
+                "sku": {
+                    "Tier": "[parameters('sku')]",
+                    "Name": "[parameters('skuCode')]"
+                },
+                "resources":[
+                    {
+                        "apiVersion": "2021-01-15",
+                        "name": "appsettings",
+                        "type": "config",
+                        "location": "[parameters('location2')]",
+                        "properties": "[parameters('appSettings')]",
+                        "dependsOn": [
+                            "[resourceId('Microsoft.Web/staticSites', parameters('site2name1'))]"
+                        ]
+                    }
+                ]
+            },
+            {
+                "apiVersion": "2021-01-15",
+                "name": "[parameters('site2name2')]",
+                "type": "Microsoft.Web/staticSites",
+                "location": "[parameters('location2')]",
+                "tags": "[parameters('webappresourceTags')]",
+                "properties": {
+                    "repositoryUrl": "[parameters('repositoryUrl')]",
+                    "branch": "[parameters('branch')]",
+                    "repositoryToken": "[parameters('repositoryToken')]",
+                    "buildProperties": {
+                        "appLocation": "[parameters('webappLocation2')]",
+                        "apiLocation": "[parameters('apiLocation')]",
+                        "appArtifactLocation": "[parameters('webappArtifactLocation2')]"
+                    }
+                },
+                "sku": {
+                    "Tier": "[parameters('sku')]",
+                    "Name": "[parameters('skuCode')]"
+                },
+                "resources":[
+                    {
+                        "apiVersion": "2021-01-15",
+                        "name": "appsettings",
+                        "type": "config",
+                        "location": "[parameters('location2')]",
+                        "properties": "[parameters('appSettings')]",
+                        "dependsOn": [
+                            "[resourceId('Microsoft.Web/staticSites', parameters('site2name2'))]"
+                        ]
+                    }
+                ]
+            }
+            ],
     "outputs": {}
 }

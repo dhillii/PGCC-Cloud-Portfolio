@@ -1,0 +1,66 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "site1name1": {
+            "value": "Location_1_Site_1"
+        },
+        "site1name2": {
+            "value": "Location_1_Site_2"
+        },
+        "site2name1": {
+            "value": "Location_2_Site_1"
+        },
+        "site2name2": {
+            "value": "Location_2_Site_2"
+        },
+        "location1": { 
+            "value": "eastus2"
+        },
+        "location2": { 
+            "value": "westus2"
+        },   
+        "sku": {
+            "value": "Free"
+        },
+        "skucode": {
+            "value": "Free"
+        },
+        "repositoryUrl": {
+            "value": "https://github.com/dhillii/PGCC-Cloud-Portfolio"
+        },
+        "branch": {
+            "value": "master"
+        },
+        "repositoryToken": {
+            "value": "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" 
+        },
+        "webappLocation1": {
+            "value": "/AZ304/src1"
+        },
+        "webappLocation2": {
+            "value": "/AZ304/src2"
+        },
+        "apiLocation": {
+            "value": ""
+        },
+        "webappArtifactLocation1": {
+            "value": "src1"
+        },
+        "webappArtifactLocation2": {
+            "value": "src2"
+        },
+        "webappResourceTags": {
+            "value": {
+                "Environment": "Development",
+                "Project": "AZ304"
+            }
+        },
+        "appSettings": {
+            "value": {
+                "MY_APP_SETTING1": "value 1",
+                "MY_APP_SETTING2": "value 2"
+            }
+        }
+    }
+}
